@@ -1,0 +1,6 @@
+{
+  "name": "IoTConnect Global",
+  "description": "A highly polished, modern website for IoTConnect, a leading global IoT connectivity and GSM MVNO provider, featuring custom carousels, responsive layout, industry targets, and interactive forms.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
