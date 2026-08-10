@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Search, Smartphone, Download, QrCode } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
+import { SEARCH_INDEX } from '../searchIndex';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,13 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [appModalOpen, setAppModalOpen] = useState(false);
   const [downloadState, setDownloadState] = useState<'idle' | 'iOS' | 'Android'>('idle');
+
+  const filteredResults = searchQuery.trim()
+  ? SEARCH_INDEX.filter(item =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.keywords.some(k => k.includes(searchQuery.toLowerCase()))
+    )
+  : [];
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -58,6 +66,13 @@ export default function Header() {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleSearchSelect = (path: string) => {
+    navigate(path);
+    setSearchQuery('');
+    setSearchOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -191,6 +206,21 @@ export default function Header() {
               >
                 <Search size={15} />
               </motion.button>
+
+              {/* Desktop search results dropdown */}
+              {searchOpen && filteredResults.length > 0 && (
+                <div className="absolute top-full mt-2 left-0 w-56 bg-[#0D0D0D] border border-white/10 rounded-lg shadow-xl overflow-hidden z-50">
+                  {filteredResults.map((item) => (
+                    <button
+                      key={item.path}
+                      onClick={() => handleSearchSelect(item.path)}
+                      className="w-full text-left px-4 py-2 text-sm text-[#F5F5F5] hover:bg-white/10 transition-colors cursor-pointer"
+                    >
+                      {item.title}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* "Get the App" solid styled brand button */}
@@ -255,14 +285,28 @@ export default function Header() {
             <button
               id="mobile-search-btn"
               onClick={() => {
-                console.log(`Searching for: ${searchQuery}`);
-                setSearchOpen(false);
+                if (filteredResults[0]) handleSearchSelect(filteredResults[0].path);
               }}
               className="bg-brand text-[#050505] px-4 py-2 rounded font-medium text-base cursor-pointer"
             >
               Go
             </button>
           </div>
+
+          {/* Mobile search results dropdown */}
+          {filteredResults.length > 0 && (
+            <div className="mt-2 bg-slate-900 border border-white/10 rounded-md overflow-hidden">
+              {filteredResults.map((item) => (
+                <button
+                  key={item.path}
+                  onClick={() => handleSearchSelect(item.path)}
+                  className="w-full text-left px-4 py-3 text-sm text-white hover:bg-white/10"
+                >
+                  {item.title}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
  
