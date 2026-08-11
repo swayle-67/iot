@@ -201,16 +201,16 @@ export default function Coverage() {
               <span className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">Countries Covered</span>
             </div>
             <div className="bg-neutral-950 text-white p-4 rounded-2xl border border-white/10 text-center">
-              <span className="text-2xl sm:text-3xl font-black text-brand font-mono block">2+</span>
-              <span className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">Carriers / Country</span>
+              <span className="text-2xl sm:text-3xl font-black text-brand font-mono block">24/7</span>
+              <span className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">Network Operations Center</span>
             </div>
             <div className="bg-neutral-950 text-white p-4 rounded-2xl border border-white/10 text-center">
               <span className="text-2xl sm:text-3xl font-black text-brand font-mono block">785+</span>
               <span className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">Global Partner Networks</span>
             </div>
             <div className="bg-neutral-950 text-white p-4 rounded-2xl border border-white/10 text-center">
-              <span className="text-2xl sm:text-3xl font-black text-brand font-mono block">99.99%</span>
-              <span className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">Core Network Uptime</span>
+              <span className="text-2xl sm:text-3xl font-black text-brand font-mono block">2G&ndash;5G</span>
+              <span className="text-[10px] text-neutral-400 font-mono uppercase tracking-wider">Network Technologies Supported</span>
             </div>
           </div>
         </div>

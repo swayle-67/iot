@@ -93,12 +93,12 @@ export default function HeroCarousel({ onCtaClick }: HeroCarouselProps) {
         {/* Main Content Area */}
         <div className="flex-1 flex items-center justify-center bg-transparent z-20">
           <div className="absolute inset-0 flex flex-col justify-center z-20 text-left px-4 sm:px-6 lg:px-8 bg-transparent pt-12">
-            <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="max-w-4xl w-full mx-auto flex flex-col items-center justify-center">
               
-              {/* Left Column: Core Hero Text and CTAs */}
-              <div className="lg:col-span-7 flex flex-col items-start">
+              {/* Core Hero Text and CTAs */}
+              <div className="w-full flex flex-col items-center text-center">
                 {/* Animated Dynamic Title - Clean typography with rotating phrases */}
-                <div className="overflow-hidden py-1 w-full text-left min-h-[110px] sm:min-h-[140px] md:min-h-[160px] flex items-center">
+                <div className="overflow-hidden py-1 w-full text-center min-h-[110px] sm:min-h-[140px] md:min-h-[160px] flex items-center justify-center">
                   <AnimatePresence mode="wait">
                     <motion.h1
                       key={phraseIndex}
@@ -106,7 +106,7 @@ export default function HeroCarousel({ onCtaClick }: HeroCarouselProps) {
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       exit={{ opacity: 0, y: -25, filter: "blur(6px)" }}
                       transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                      className="text-[#F5F5F5] font-bold text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[1.1] filter drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] text-left font-display"
+                      className="text-[#F5F5F5] font-bold text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[1.1] filter drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] text-center font-display"
                     >
                       {HERO_PHRASES[phraseIndex]}
                     </motion.h1>
@@ -114,12 +114,12 @@ export default function HeroCarousel({ onCtaClick }: HeroCarouselProps) {
                 </div>
 
                 {/* Animated Subtext - Luxurious clip-path vertical mask reveal with custom bezier curve */}
-                <div className="overflow-hidden py-1 w-full text-left mt-6">
+                <div className="overflow-hidden py-1 w-full text-center mt-6">
                   <motion.p
                     initial={{ opacity: 0, y: "40%", clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)", filter: "blur(4px)" }}
                     animate={{ opacity: 1, y: 0, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", filter: "blur(0px)" }}
                     transition={{ delay: 0.45, duration: 1.4, ease: [0.19, 1, 0.22, 1] }}
-                    className="text-[#A8A8A8] text-body-large text-left max-w-[560px]"
+                    className="text-[#A8A8A8] text-body-large text-center max-w-[560px] mx-auto"
                   >
                     Connecting devices and streams worldwide with a single multi-network SIM offering reliable coverage in 195 countries across 785 networks.
                   </motion.p>
@@ -130,7 +130,7 @@ export default function HeroCarousel({ onCtaClick }: HeroCarouselProps) {
                   initial={{ opacity: 0, y: 20, scale: 0.98, filter: "blur(3px)" }}
                   animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
                   transition={{ delay: 0.6, duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
-                  className="mt-8 text-left"
+                  className="mt-8 text-center flex justify-center w-full"
                 >
                   <motion.button
                     id="hero-cta-btn"
@@ -147,15 +147,6 @@ export default function HeroCarousel({ onCtaClick }: HeroCarouselProps) {
                   </motion.button>
                 </motion.div>
               </div>
-
-              {/* Right Column: Glassmorphic Telemetry HUD Dashboard Overlay */}
-              <motion.div 
-                initial={{ opacity: 0, x: 40, filter: "blur(8px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.5, duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
-                className="hidden lg:col-span-5 lg:flex flex-col relative z-30"
-              >
-              </motion.div>
 
             </div>
           </div>
